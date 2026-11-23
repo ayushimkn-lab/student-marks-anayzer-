@@ -30,7 +30,6 @@ def input_marks():
     subjects = []
     marks = []
 
-    # Input number of subjects
     while True:
         try:
             number_of_subjects = int(
@@ -51,7 +50,6 @@ def input_marks():
                 "Please enter a valid whole number."
             )
 
-    # Input subject names and marks
     for i in range(number_of_subjects):
 
         # Input subject name
@@ -75,7 +73,6 @@ def input_marks():
                     )
                 )
 
-                # Validate marks
                 if not validate_mark(mark):
                     print(
                         "Invalid marks! "
@@ -252,10 +249,18 @@ def save_to_csv(
     grade
 ):
     """
-    Save each student's result to results.csv.
+    Save student's result to results.csv
+    in the Student Marks Analyzer folder.
     """
 
-    filename = "results.csv"
+    # Exact folder where CSV will be saved
+    folder_path = r"C:\Users\Bhanvi\Desktop\Ayushi projects\student-marks-analyzer"
+
+    # Create folder if it does not already exist
+    os.makedirs(folder_path, exist_ok=True)
+
+    # Complete path of CSV file
+    filename = os.path.join(folder_path, "results.csv")
 
     # Check whether CSV file already exists
     file_exists = os.path.exists(filename)
@@ -294,13 +299,14 @@ def save_to_csv(
                 grade
             ])
 
-    print("\nResult saved successfully to results.csv")
+    print("\nResult saved successfully!")
+    print("CSV file location:")
+    print(filename)
 
 
-# ============================================================
 # 12. MAIN PROGRAM
-# ============================================================
 def main():
+
     name = input_student_name()
 
     subjects, marks = input_marks()
@@ -322,6 +328,6 @@ def main():
     )
 
 
-# Run the program
+# RUN THE PROGRAM
 if __name__ == "__main__":
-    main()
+    main()a
